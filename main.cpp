@@ -62,7 +62,6 @@ vector<int>& getSpeechPromotionNum(vector<int>& plyNumVec, map<float, int>* grou
 
             map<int, speechPlayer>::iterator splayer = plymap.find(it.second);
             (splayer->second).setScore(it.first);
-            cout << "µÚ" << i << "×é£º" << it.first << "  " << it.second << endl;
         }
         groupMap[i].erase(it, it + 3);
         for (auto it : groupMap[i]) {
@@ -102,9 +101,11 @@ int main()
     map<float, int>* groupMap = groupPlayerScore(plyNumVec);
     int groupNum = plyNumVec.size() / SPEECHAGROUPNUM;
     plyNumVec.clear();
-    getSpeechPromotionNum(plyNumVec, groupMap, groupNum, plymap);
-    for (auto it : plymap) {
-        cout << "±àºÅ£º" << it.first << " ÐÕÃû£º" << it.second.getName() << " ³É¼¨£º" << it.second.getScore() << endl;
+    plyNumVec = getSpeechPromotionNum(plyNumVec, groupMap, groupNum, plymap);
+
+    for (auto it : plyNumVec) {
+
+        cout << "±àºÅ£º" << it << " ÐÕÃû£º" << plymap[it].getName() << " ³É¼¨£º" << (plymap[it].getScore())[plymap[it].getNum() - 1] << endl;
     }
     random_shuffle(plyNumVec.begin(), plyNumVec.end());
     groupMap = groupPlayerScore(plyNumVec);
@@ -113,11 +114,19 @@ int main()
     plyNumVec.clear();
     getSpeechPromotionNum(plyNumVec, groupMap, groupNum, plymap);
 
+    for (auto it : plyNumVec) {
+
+        cout << "±àºÅ£º" << it << " ÐÕÃû£º" << plymap[it].getName() << " ³É¼¨£º" << (plymap[it].getScore())[plymap[it].getNum() - 1] << endl;
+    }
     random_shuffle(plyNumVec.begin(), plyNumVec.end());
     groupMap = groupPlayerScore(plyNumVec);
     groupNum = plyNumVec.size() / SPEECHAGROUPNUM;
     plyNumVec.clear();
     getSpeechPromotionNum(plyNumVec, groupMap, groupNum, plymap);
 
+    for (auto it : plyNumVec) {
+
+        cout << "±àºÅ£º" << it << " ÐÕÃû£º" << plymap[it].getName() << " ³É¼¨£º" << (plymap[it].getScore())[plymap[it].getNum() - 1] << endl;
+    }
     return 0;
 }

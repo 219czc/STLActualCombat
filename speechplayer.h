@@ -9,15 +9,18 @@ class speechPlayer
 public:
     speechPlayer();
     speechPlayer(string name,float score=0);
-    float getScore() const;
+    float* getScore() const;
     void setScore(float newScore);
 
     const string &getName() const;
     void setName(const string &newName);
 
+    int getNum() const;
+
 private:
-    float score;
+    float *score;
     string name;
+    int num;
 };
 
 #endif // SPEECHPLAYER_H
